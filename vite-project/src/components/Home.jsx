@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@mui/material/Button';
+import Save from './SaveButton';
 import TabsContainer from './TabsContainer';
 
 const Home = () => {
@@ -7,7 +7,7 @@ const Home = () => {
     <div className='p-4'>
       <div className='flex justify-between my-3'>
         <h2 className='text-2xl'>Create Workorder</h2>
-        <Button variant='contained'>Save</Button>
+        <Save />
       </div>
       <TabsContainer />
     </div>

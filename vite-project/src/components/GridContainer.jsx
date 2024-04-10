@@ -1,19 +1,24 @@
-import React from 'react';
+// GridContainer.js
+import React, { useState } from 'react';
 import GridHead from './GridHead';
 import GridChild from './GridChild';
 
 const GridContainer = () => {
+  const [parentCheckboxState, setParentCheckboxState] = useState(false);
+
+  const handleParentCheckboxChange = (isChecked) => {
+    setParentCheckboxState(isChecked);
+  };
+
   return (
     <>
-      <GridHead />
+      <GridHead handleParentCheckboxChange={handleParentCheckboxChange} />
       <GridChild
-        id='1'
         name='Civil 1'
         rate='200'
         total='200000'
       />
       <GridChild
-        id='2'
         name='Civil 2'
         rate='200'
         total='200000'

@@ -1,46 +1,67 @@
+import React, { useState } from 'react';
 import { FaPlus, FaMinus } from 'react-icons/fa';
-import { useState } from 'react';
 import Activity from './Activity';
-const GridChild = ({ id, name, total, rate }) => {
+
+const GridChild = ({
+  name,
+  total,
+  rate,
+  parentCheckboxState,
+  handleParentCheckboxChange,
+}) => {
   const [open, setOpen] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = (event) => {
+    const newValue = event.target.checked;
+    setIsChecked(newValue);
+    handleParentCheckboxChange(newValue);
+  };
+
+  React.useEffect(() => {
+    setIsChecked(parentCheckboxState);
+  }, [parentCheckboxState]);
+
   return (
     <>
-      <div className='p-2 grid grid-cols-5 '>
-        <div className=' col-span-2 '>
+      <div className='p-2 grid grid-cols-5'>
+        <div className='col-span-2'>
           <input
             type='checkbox'
-            id={`checkbox${id}`}
+            checked={isChecked}
+            onChange={handleCheckboxChange}
           />
-          <label
-            className='m-2'
-            htmlFor={`checkbox${id}`}
-          >
-            {name}
-          </label>
+          <label className='m-2'>{name}</label>
         </div>
         <div>{rate}</div>
         <div>{total}</div>
         {!open && (
           <div
-            className=' cursor-pointer'
+            className='cursor-pointer'
             onClick={() => setOpen(true)}
           >
-            <FaPlus className=' text-sky-400' />
+            <FaPlus className='text-sky-400' />
           </div>
         )}
         {open && (
           <div
-            className=' cursor-pointer'
+            className='cursor-pointer'
             onClick={() => setOpen(false)}
           >
-            <FaMinus className=' text-sky-400' />
+            <FaMinus className='text-sky-400' />
           </div>
         )}
       </div>
       {open && (
         <div>
-          <Activity number='1' />
-          <Activity number='2' />
+          <Activity
+            number='1'
+            parentCheckboxState={isChecked}
+          />
+          <Activity
+            number='2'
+            parentCheckboxState={isChecked}
+          />
         </div>
       )}
     </>
