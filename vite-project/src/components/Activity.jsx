@@ -1,4 +1,3 @@
-// Activity.js
 import React, { useState } from 'react';
 import { BsChevronUp, BsChevronDown } from 'react-icons/bs';
 

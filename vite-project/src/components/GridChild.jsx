@@ -2,25 +2,14 @@ import React, { useState } from 'react';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import Activity from './Activity';
 
-const GridChild = ({
-  name,
-  total,
-  rate,
-  parentCheckboxState,
-  handleParentCheckboxChange,
-}) => {
+const GridChild = ({ name, total, rate }) => {
   const [open, setOpen] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = (event) => {
     const newValue = event.target.checked;
     setIsChecked(newValue);
-    handleParentCheckboxChange(newValue);
   };
-
-  React.useEffect(() => {
-    setIsChecked(parentCheckboxState);
-  }, [parentCheckboxState]);
 
   return (
     <>
