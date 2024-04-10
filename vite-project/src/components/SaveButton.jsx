@@ -19,13 +19,11 @@ const SaveButton = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleSave = () => {
-    // Print the input data on the console
     console.log('Client:', client);
     console.log('Commencement Date:', commencementDate);
     console.log('Completion Date:', completionDate);
     console.log('RFQ Code:', rfqCode);
 
-    // Close the dialog box
     setDialogOpen(false);
   };
 

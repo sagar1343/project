@@ -28,8 +28,18 @@ const Activity = ({ number, parentCheckboxState }) => {
         <div>200</div>
         <div>200000</div>
         <div>
-          <div onClick={() => setOpen(true)}>{!open && <BsChevronDown />}</div>
-          <div onClick={() => setOpen(false)}>{open && <BsChevronUp />}</div>
+          <div
+            className='cursor-pointer'
+            onClick={() => setOpen(true)}
+          >
+            {!open && <BsChevronDown />}
+          </div>
+          <div
+            className='cursor-pointer'
+            onClick={() => setOpen(false)}
+          >
+            {open && <BsChevronUp />}
+          </div>
         </div>
       </div>
       {open && (
